@@ -260,7 +260,36 @@ a {
     margin-bottom: 15px;
 }
 
+/* Course Form Temporary */
+.course-form-section {
+    padding: 40px 20px;
+    max-width: 500px;
+    margin: 0 auto;
 
+.course-form-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.course-form-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.course-form-section input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--light-navy);
+}
+
+.course-form-section select {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--light-navy);
+}
+
+}
 /* Credits */
 
 .credits {

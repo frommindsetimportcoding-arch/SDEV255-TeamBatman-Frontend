@@ -3,6 +3,7 @@ import './style.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import CoursePreview from './components/CoursePreview'
+import CourseForm from './components/CourseForm'
 
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
 
           {/* -- Course Preview -- */}
           <CoursePreview /> 
+
+          {/* -- Temporary Placement -- */}
+          <CourseForm />
 
 
       </main>
