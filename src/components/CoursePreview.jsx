@@ -9,7 +9,9 @@ function CoursePreview() {
 
     // Fetch data from the backend when page loads
     useEffect(() => {
-        fetch("http://localhost:3000/api/courses")
+        // Commented out. Uncomment for local test
+        //fetch("http://localhost:3000/api/courses")
+        fetch("https://sdev255-teambatman-backend.onrender.com/api/courses")
             .then((res) => res.json())
             .then((data) => {
                 setCourses(data);  // This saves the database array into state

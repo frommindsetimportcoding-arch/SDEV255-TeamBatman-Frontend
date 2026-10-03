@@ -14,7 +14,9 @@ function CourseForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/api/courses", {
+            // Commented out. Uncomment for local test
+            //const response = await fetch("http://localhost:3000/api/courses", {
+            const response = await fetch("https://sdev255-teambatman-backend.onrender.com/api/courses", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
