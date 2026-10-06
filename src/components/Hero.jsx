@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom'
 
 function Hero() {
     return (
@@ -21,10 +21,11 @@ function Hero() {
                         Navigate your course schedule smoothly
                         and make your learning journey a breeze.
                     </p>
-
-                    <a href="courses.html" className="btn">
+                    {/* The path will change but I wanted to code it so the button took you
+                        to a page that we have built currently */ }
+                    <Link to="/courses" className="btn">
                         Explore Courses
-                    </a>
+                    </Link>
 
                 </div>
 
