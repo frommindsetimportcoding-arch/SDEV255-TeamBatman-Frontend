@@ -4,13 +4,15 @@ import './style.css'
 
 // Components
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import CoursePreview from './components/CoursePreview'
+
 
 // Views
 import Courses from './pages/Courses'
 import Schedule from './pages/Schedule'
 import Login from './pages/Login'
+import Home from './pages/Home'
+import Teacher from './pages/Teacher'
+import Student from './pages/Student'
 
 
 function App() {
@@ -24,26 +26,22 @@ function App() {
         <Navbar />
         
         <Routes>
-          <Route path="/" element={
-              <main>
+          {/* -- Route for Home link -- */}
+          <Route path="/" element={<Home />}/>
 
-                {/* -- Hero Section -- */}
-                <Hero />
-
-                {/* -- Course Preview -- */}
-                <CoursePreview /> 
-
-              </main>
-            }
-          />
-
-          {/* Route for Courses link */ }
+          {/* -- Route for Courses link -- */}
           <Route path="/courses" element={<Courses />} />
 
-          {/* Route for home Schedule link */ }
+          {/* -- Route for home Schedule link -- */}
           <Route path="/schedule" element={<Schedule />} />
 
-          {/* Route for Login page link */ }
+          {/* -- Route for Teacher Dashboard -- */}
+          <Route path="/teacher" element={<Teacher />} />
+
+          {/* -- Route for Student Dashboard -- */}
+          <Route path="/student" element={<Student />} /> 
+
+          {/* -- Route for Login page link -- */}
           <Route path="/login" element={<Login />} />
 
         </Routes>

@@ -2,9 +2,10 @@
     --navy: #0B1F3A;
     --light-navy: #132D4F;
     --gold: #D4AF37;
+    --background-dark: rgb(83, 107, 124);
     --background: #F4F6F8;
     --white: #FFFFFF;
-    --text: #1F2933;
+    --text: #dae5ec;
     --gray: #667085;
 }
 * {
@@ -15,7 +16,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--background);
+    background-color: var(--background-dark);
     color: var(--text);
     line-height: 1.6;
 }
@@ -84,6 +85,39 @@ a {
     border-bottom-color: var(--gold);
 }
 
+/* Session Controls and Nav Accents */
+
+.session-controls {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    border-left: 1px solid var(--light-navy);
+    padding-left: 35px;
+}
+
+.nav-accents {
+    color: var(--gold);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.logout-btn {
+    display: inline-block;
+
+    background: var(--gold);
+    color: var(--navy);
+    border: 1px solid rgba(66, 55, 3, 0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: var(--background);
+}
 
 /* =========================
    HERO SECTION
@@ -193,7 +227,7 @@ a {
 }
 
 .section-heading p:last-child {
-    color: var(--gray);
+    color: var(--text);
 }
 
 
@@ -260,36 +294,7 @@ a {
     margin-bottom: 15px;
 }
 
-/* Course Form Temporary */
-.course-form-section {
-    padding: 40px 20px;
-    max-width: 500px;
-    margin: 0 auto;
 
-.course-form-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.course-form-section form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.course-form-section input {
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid var(--light-navy);
-}
-
-.course-form-section select {
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid var(--light-navy);
-}
-
-}
 /* Credits */
 
 .credits {
@@ -381,4 +386,127 @@ footer {
     .features {
         grid-template-columns: 1fr;
     }
+}
+
+/* TEACHER PAGE */
+.teacher-page {
+    background-color: var(--background);
+    min-height: calc(100vh - 78px);
+}
+
+.teacher-header {
+    background-color: var(--navy);
+    color: var(--white);
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.teacher-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.teacher-header p:not(.eyebrow) {
+    color: #D9E0E8;
+}
+
+.teacher-courses {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px;
+}
+
+.teacher-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.teacher-section-header h2 {
+    color: var(--text);
+    font-size: 2rem;
+}
+
+.teacher-section-header p {
+    color: var(--text);
+}
+
+.teacher-course-list {
+    display: grid;
+    gap: 25px;
+}
+
+.teacher-course-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    border-top: 4px solid var(--gold);
+    padding: 30px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.course-info h3 {
+    color: var(--navy);
+    margin: 10px 0;
+}
+
+.course-info p {
+    color: var(--gray);
+    margin-bottom: 10px;
+}
+
+.course-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.course-actions button,
+.student-row button {
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.edit-btn {
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+.delete-btn,
+.remove-btn {
+    background-color: #B42318;
+    color: var(--white);
+}
+
+.students {
+    border-top: 1px solid #E5E7EB;
+    margin-top: 25px;
+    padding-top: 20px;
+}
+
+.students h4 {
+    color: var(--navy);
+    margin-bottom: 15px;
+}
+
+.student-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.student-row span {
+    color: var(--navy);
+}
+.teacher-nav-button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
 }

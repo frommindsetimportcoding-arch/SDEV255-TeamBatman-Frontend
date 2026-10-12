@@ -1,6 +1,7 @@
 
 import CourseCard from './CourseCard'
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../.config';
 
 function CoursePreview() {
     // Create state varable to hold database courses
@@ -9,9 +10,8 @@ function CoursePreview() {
 
     // Fetch data from the backend when page loads
     useEffect(() => {
-        // Commented out. Uncomment for local test
-        //fetch("http://localhost:3000/api/courses")
-        fetch("https://sdev255-teambatman-backend.onrender.com/api/courses")
+        // Constant used to switch between testing and production URLS. --> .config to switch. 
+        fetch(`${API_BASE_URL}/courses`)
             .then((res) => res.json())
             .then((data) => {
                 setCourses(data);  // This saves the database array into state
