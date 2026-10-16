@@ -30,7 +30,7 @@ function Student() {
                 if (catalogRes.ok) setGlobalCatalog(catalogData);
                 if (scheduleRes.ok) {
                     setSavedSchedule(scheduleData);
-                    setDraftSchedule(scheduleData);  // This initializes the car with DB enrolled list
+                    setDraftSchedule(scheduleData);  // This initializes the cart with DB enrolled list
                 }
             } catch (err) {
                 console.error("Error while connecting to students schedule:", err);
@@ -81,7 +81,7 @@ function Student() {
                 setDraftSchedule(updatedSchedule);
 
                 const courseListNames = updatedSchedule
-                .map((course) => `${course.courseNumber} - ${course.name}`)
+                .map((course) => `${course.courseNumber} - ${course.courseName}`)
                 .join("\n");
 
                 alert(`You have been successfully enrolled in the following courses:\n\n ${courseListNames}`);
@@ -105,14 +105,16 @@ function Student() {
                 <p>Search courses by name, course number, discipline or term. Draft your schedule and submit for enrollment.</p>
             </section>
 
-            <EnrolledCourses officialCourses={savedSchedule} /> 
+            <div style={{ width: "750px", flexDirection: "row", flex: "1"}}>
+                <EnrolledCourses officialCourses={savedSchedule} /> 
+            </div>
 
             <div className='workspace-split'>
                 <div className='student-course-list'>
                     <CourseList catalog={globalCatalog} onAdd={handleAddCourse} />
                 </div>
 
-                <div className='student-schedule-builder'>
+                <div className='student-schedule-builder' style={{ flexDirection: "row", flex: "1"}}>
                     <ScheduleBuilder
                         draft={draftSchedule}
                         onRemove={handleRemoveCourse}

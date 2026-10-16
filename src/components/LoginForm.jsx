@@ -28,6 +28,8 @@ function LoginForm() {
             localStorage.setItem("auth", data.auth);
             localStorage.setItem("username", data.username);
             localStorage.setItem("firstName", data.firstName);
+            localStorage.setItem("lastName", data.lastName);
+            localStorage.setItem("role", data.role);
 
             window.location.replace("index.html");
         } catch (err) {

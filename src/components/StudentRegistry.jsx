@@ -6,7 +6,7 @@ function StudentRegistry({ course, onRemoveStudent }) {
             {course.students && course.students.length > 0 ? (
                 course.students.map((student) => (
                     <div className="student-row" key={student._id || student.id}>
-                        <span>{student.name || student.username}</span>
+                        <span><strong>Name:</strong> {student.firstName} {student.lastName} | <strong>User:</strong> {student.username} | <strong>Email:</strong> {student.email} </span>
                         <button
                             className="remove-btn"
                             onClick={() => onRemoveStudent(course._id, student._id || student.id)}

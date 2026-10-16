@@ -2,11 +2,13 @@
 import CourseCard from './CourseCard'
 import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../.config';
+import DetailedCourseCard from './DetailedCourseCard';
 
 function CoursePreview() {
     // Create state varable to hold database courses
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selectedCourse, setSelectedCourse] = useState(null);
 
     // Fetch data from the backend when page loads
     useEffect(() => {
@@ -36,17 +38,30 @@ function CoursePreview() {
             </div>
             <div className = "course-grid">
                {courses.map((course) => (
-                    <CourseCard
-                        key={course._id}
-                        number = {course.courseNumber}
-                        title = {course.courseName}
-                        dept = {course.subjectArea}
-                        credits = {course.credits.toString()}
-                    /> 
+                    <div 
+                    key={course._id}
+                    className="course-card-white"
+                    onClick={() => setSelectedCourse(course)}
+                    style={{ cursor: "pointer" }}                    
+                    >
+                        <CourseCard
+                            key={course._id}
+                            number = {course.courseNumber}
+                            title = {course.courseName}
+                            dept = {course.subjectArea}
+                            credits = {course.credits.toString()}
+                        /> 
+                    </div>
                 ))}
             </div>
+            {selectedCourse && (
+                <DetailedCourseCard
+                    course={selectedCourse}
+                    onClose={() => setSelectedCourse(null)}
+                />
+            )}
         </section>
-    )
+    );
 }
 
-export default CoursePreview
+export default CoursePreview;

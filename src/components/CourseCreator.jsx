@@ -29,7 +29,7 @@ function CourseCreator({ editingCourse, onSave, onCancel }) {
                 subjectArea: "",
                 credits: "",
                 courseNumber: "", 
-                semester: ""
+                semester: "Fall"
             })
         }
     }, [editingCourse]);
@@ -66,13 +66,22 @@ function CourseCreator({ editingCourse, onSave, onCancel }) {
                     onChange={(e) => setFormData({ ...formData, subjectArea: e.target.value })}
                     required
                 /> 
-                <input
-                    type="number"
-                    placeholder="Number of Credits"
-                    value={formData.credits}
-                    onChange={(e) => setFormData({ ...formData, credits: e.target.value })}
-                    required
-                /> 
+                <div className="form-row-half">
+                    <input
+                        type="number"
+                        placeholder="Number of Credits"
+                        value={formData.credits}
+                        onChange={(e) => setFormData({ ...formData, credits: e.target.value })}
+                        required
+                    /> 
+                    <select
+                        value={formData.semester}
+                        onChange={(e) => setFormData({ ...formData, semester: e.target.value })}
+                    >
+                        <option value="Fall">Fall Semester</option>
+                        <option value="Spring">Spring Semester</option>
+                    </select>
+                </div>
                 <textarea
                     placeholder="Course Description"
                     value={formData.description}
@@ -80,13 +89,7 @@ function CourseCreator({ editingCourse, onSave, onCancel }) {
                     rows="3"
                     required
                 /> 
-                <select
-                    value={formData.semester}
-                    onChange={(e) => setFormData({ ...formData, semester: e.target.value })}
-                >
-                    <option value="Fall">Fall Semester</option>
-                    <option value="Spring">Spring Semester</option>
-                </select>
+                
 
                 <div className="form-actions"
                     style={{
@@ -98,7 +101,7 @@ function CourseCreator({ editingCourse, onSave, onCancel }) {
                     <button type="submit" className="btn">
                         {editingCourse ? "Update Course" : "Create Course"}
                     </button>
-                    <button type="button" className="btn cancel-btn" onClick={onCancel}>
+                    <button type="button" className="remove-btn" onClick={onCancel}>
                         Cancel
                     </button>
                 </div>

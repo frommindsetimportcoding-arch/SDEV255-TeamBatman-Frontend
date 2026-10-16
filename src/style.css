@@ -136,6 +136,7 @@ a {
     text-align: center;
 
     padding: 60px 20px;
+    border-bottom: .1rem solid var(--white);
 }
 
 .hero-content {
@@ -194,12 +195,66 @@ a {
     font-weight: bold;
 
     transition: 0.2s;
+    width: 140px;                 /* Sets baseline width */
+    box-sizing: border-box;       /* Forces padding to stay INSIDE the width limits */
+    
+    /* 2. PREVENT FLEX GRID STRETCHING */
+    flex-shrink: 0;               /* Blocks flex parents from squishing button */
+    align-self: center;           /* Keeps it centered inside its specific layout slot */
+    
+    /* 3. VERTICAL PADDING CONTROLS */
+    height: 40px;                 
+    padding: 0 16px;              
+    
+    /* Text alignment rules */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;          /* Prevents text from wrapping into two lines */
 }
 
 .btn:hover {
-    background-color: var(--white);
+    /* background-color: var(--white); */
+    background: #f1c43f;
 }
 
+.create-course-btn {
+    display: inline-block;
+
+    background-color: var(--gold);
+    color: var(--navy);
+
+    padding: 12px 25px;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+    font-size: 1.3rem;
+
+    transition: 0.2s;
+    width: 200px;                 /* Sets baseline width */
+    box-sizing: border-box;       /* Forces padding to stay INSIDE the width limits */
+    
+    /* 2. PREVENT FLEX GRID STRETCHING */
+    flex-shrink: 0;               /* Blocks flex parents from squishing button */
+    align-self: center;           /* Keeps it centered inside its specific layout slot */
+    
+    /* 3. VERTICAL PADDING CONTROLS */
+    height: 60px;                 
+    padding: 0 16px;              
+    
+    /* Text alignment rules */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;          /* Prevents text from wrapping into two lines */
+}
+
+.create-course-btn:hover {
+    background-color: #f1c43f;
+}
 
 /*Course Preview */
 
@@ -286,6 +341,7 @@ a {
 }
 
 
+
 /* Subject */
 
 .course-card p {
@@ -303,6 +359,170 @@ a {
     font-weight: bold;
 }
 
+/* Detailed Course Card */
+
+.backdrop-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(11, 31, 58, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.detailed-course-card {
+    background-color: var(--navy);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 650px;
+    padding: 35px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+    color: var(--white);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.detailed-course-card button {
+    position: absolute !important;
+    bottom: 15px !important;
+    right: 20px !important;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.15s ease;
+
+
+    width: 140px;                 /* Sets baseline width */
+    box-sizing: border-box;       /* Forces padding to stay INSIDE the width limits */
+
+
+    /* 2. PREVENT FLEX GRID STRETCHING */
+    flex-shrink: 0;               /* Blocks flex parents from squishing button */
+    align-self: center;           /* Keeps it centered inside its specific layout slot */
+    
+    /* 3. VERTICAL PADDING CONTROLS */
+    height: 40px;                 
+    padding: 0 16px;              
+    
+    /* Text alignment rules */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;          /* Prevents text from wrapping into two lines */
+}
+
+.detailed-course-card button:hover {
+    opacity: 1;
+    background: none;
+}
+
+.detailed-course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.detailed-course-number {
+    background-color: var(--gold);
+    color: var(--navy);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.detailed-course-semester {
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.detailed-course-name {
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin: 0 0 6px 0;
+    color: var(--white);
+    border-bottom: 1px dashed var(--light-navy);
+    padding-bottom: 12px;
+}
+
+.detailed-course-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+    background-color: var(--light-navy);
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.detailed-course-subject strong,
+.detailed-course-credits strong {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.detailed-course-subject span,
+.detailed-course-credits span {
+    color: var(--text)
+}
+
+.detailed-course-teacher {
+    grid-column: span 2;
+}
+
+.detailed-course-teacher strong {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.detailed-course-teacher span {
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.detailed-course-description {
+    margin-bottom: 25px;
+}
+
+.detailed-course-description strong {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.detailed-course-description p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text);
+    opacity: 0.9;
+    line-height: 1.5;
+    text-align: justify;
+}
 
 /*Features*/
 
@@ -390,10 +610,13 @@ footer {
 
 /* TEACHER PAGE */
 .teacher-page {
-    background-color: var(--background);
+    background-color: var(--background-dark);
     min-height: calc(100vh - 78px);
 }
 
+.dashboard-layout-wrapper {
+    position: relative;
+}
 .teacher-header {
     background-color: var(--navy);
     color: var(--white);
@@ -402,8 +625,10 @@ footer {
 }
 
 .teacher-header h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     margin-bottom: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text);
 }
 
 .teacher-header p:not(.eyebrow) {
@@ -413,7 +638,7 @@ footer {
 .teacher-courses {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 30px;
+    padding: 100px 30px;
 }
 
 .teacher-section-header {
@@ -421,11 +646,25 @@ footer {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    background-color: var(--navy);
+
+    position: absolute;
+    top: 250px;
+    left: 0px;
+    right: 0px;
+    z-index: 10;
+    padding: 10px 150px 20px 60px;
+    border-bottom: 0.1rem solid var(--white)
 }
 
 .teacher-section-header h2 {
-    color: var(--text);
-    font-size: 2rem;
+    color: var(--white);
+    opacity: 0.9;
+    font-size: 3rem;
+    padding: 0 10px;
+    border-bottom: .3rem solid var(--gold);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
 }
 
 .teacher-section-header p {
@@ -442,6 +681,7 @@ footer {
     border-radius: 8px;
     border-top: 4px solid var(--gold);
     padding: 30px;
+    margin: 50px 40px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
 
@@ -461,6 +701,62 @@ footer {
     margin-top: 20px;
 }
 
+.course-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--navy);
+    border-radius: 12px;
+    border: 3px solid var(--gold);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    display: grid;
+    gap: 1.25rem;
+}
+
+.course-form h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text);
+    font-size: 1.6rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.course-form input[type="text"],
+.course-form input[type="number"],
+.course-form textarea,
+.course-form select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    background-color: var(--light-navy);
+    color: var(--text);
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+.course-form input:hover,
+.course-form textarea:hover,
+.course-form select:hover {
+    outline: none;
+    border-color: #f1c43f;
+    box-shadow: 1px 1px .2rem .1rem var(--gold);
+}
+
+.course-form input:focus,
+.course-form textarea:focus,
+.course-form select:focus {
+    outline: none;
+    border-color: #f1c43f;
+    box-shadow: 0 0 .2rem .1rem var(--gold);
+}
+
+.form-row-half {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
 .course-actions button,
 .student-row button {
     border: none;
@@ -469,16 +765,137 @@ footer {
     cursor: pointer;
     font-weight: bold;
 }
+/* More Teacher Cards (home page) */
+.teacher-home-panel {
+    background: var(--navy);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--light-navy); 
+}
+
+.teacher-home-panel h3 {
+    color: var(--gold);
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+}
+
+.teacher-home-panel p {
+    font-style: italic;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.teacher-courselist-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.teacher-home-card {
+    background: var(--light-navy);
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.teacher-course-num {
+    color: var(--gold);
+    display: block;
+    opacity: 0.7;
+}
+
+.teacher-course-name {
+    font-size: 1.2rem;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.enrolled-students {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-top: 4px;
+}
 
 .edit-btn {
     background-color: var(--navy);
+    color: var(--white);
+    width: 140px;                 /* Sets baseline width */
+    box-sizing: border-box;       /* Forces padding to stay INSIDE the width limits */
+    
+    /* 2. PREVENT FLEX GRID STRETCHING */
+    flex-shrink: 0;               /* Blocks flex parents from squishing button */
+    align-self: center;           /* Keeps it centered inside its specific layout slot */
+    
+    /* 3. VERTICAL PADDING CONTROLS */
+    height: 40px;                 
+    padding: 0 16px;              
+    
+    /* Text alignment rules */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;          /* Prevents text from wrapping into two lines */
+}
+
+.edit-btn:hover {
+    background-color: #234b80;
     color: var(--white);
 }
 
 .delete-btn,
 .remove-btn {
-    background-color: #B42318;
+    background-color: #b42218e1;
     color: var(--white);
+    width: 140px;                 /* Sets baseline width */
+    box-sizing: border-box;       /* Forces padding to stay INSIDE the width limits */
+    
+    /* 2. PREVENT FLEX GRID STRETCHING */
+    flex-shrink: 0;               /* Blocks flex parents from squishing button */
+    align-self: center;           /* Keeps it centered inside its specific layout slot */
+    
+    /* 3. VERTICAL PADDING CONTROLS */
+    height: 40px;                 
+    padding: 0 16px;              
+    
+    /* Text alignment rules */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;          /* Prevents text from wrapping into two lines */
+}
+
+.detailed-return-btn {
+    background-color: #b42218e1;
+    color: var(--navy);
+    width: 140px;                 /* Sets baseline width */
+    box-sizing: border-box;       /* Forces padding to stay INSIDE the width limits */
+    position: absolute !important;
+    bottom: 25px !important;
+    right: 30px !important;
+    
+
+    /* 2. PREVENT FLEX GRID STRETCHING */
+    flex-shrink: 0;               /* Blocks flex parents from squishing button */
+    align-self: center;           /* Keeps it centered inside its specific layout slot */
+    
+    /* 3. VERTICAL PADDING CONTROLS */
+    height: 40px;                 
+    padding: 0 16px;              
+    
+    /* Text alignment rules */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;          /* Prevents text from wrapping into two lines */
+}
+
+
+.delete-btn:hover,
+.remove-btn:hover {
+    background-color: #8a120ae1;
 }
 
 .students {

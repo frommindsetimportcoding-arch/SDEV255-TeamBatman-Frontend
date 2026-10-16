@@ -5,7 +5,9 @@ function ScheduleBuilder({ draft, onRemove, onSave }) {
     return (
         <div className="schedule-builder-container">
             <h2>Schedule Builder</h2>
-            <p>Review your temporary selections below. Changes won't reflect enrollment until submission.</p>
+            <p>Schedule Builder will initialize with your current enrollments. You may modify this selection by adding
+                or removing courses. When you are happy with your selections, you may update your schedule by hitting "Enroll".
+            </p>
 
             {/* Check if the draft state array is empty */}
             {!draft || draft.length === 0 ? (
@@ -16,14 +18,14 @@ function ScheduleBuilder({ draft, onRemove, onSave }) {
                         <div key={course._id} className="schedbuild-item-card">
                             <div>
                                 <span className="schedbuild-item-heading">{course.courseNumber} | {course.courseName}</span>
-                                <span className="schedbuild-item-sub">{course.semester} | {course.credits}</span>
+                                <span className="schedbuild-item-sub">{course.semester} | {course.credits} Credits</span>
                             </div>
 
                             <button
                                 className="schedbuild-remove-btn"
                                 onClick={() => onRemove(course._id)}
                             >
-                                Remove
+                                X
                             </button>
                         </div>
                     ))}
@@ -32,7 +34,7 @@ function ScheduleBuilder({ draft, onRemove, onSave }) {
                     <div className="schedbuild-summary">
                         <p>
                             <span>Total Credits:</span>
-                            <span>{totalCredits} hrs</span>
+                            <span>{totalCredits} Credit Hours</span>
                         </p>
                     </div>
 

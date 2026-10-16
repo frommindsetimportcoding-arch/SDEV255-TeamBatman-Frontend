@@ -9,13 +9,15 @@ function Hero() {
 
                     <p className="eyebrow">
                         COURSEHUB
-                        {/* -- display Student or Teacher based on login -- */}
                     </p>
 
                     <h1>
                         Welcome to CourseHub
-                        {/* -- change this to display user's name -- */}
                     </h1>
+
+                    <h2 style={{ fontSize: "2.5rem", margin:"0", color:"var(--gold)" }}>
+                        {localStorage.getItem("firstName")} {localStorage.getItem("lastName")}
+                    </h2>
 
                     <p>
                         Navigate your course schedule smoothly

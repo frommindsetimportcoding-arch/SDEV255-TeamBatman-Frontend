@@ -16,10 +16,10 @@ function CourseList({ catalog, onAdd }) {
 
     // Dynamic search using .includes(query). Filters by course name, course number or subject area.
     const filteredCatalog = catalog.filter((course) => {
-        const query = searchQuery.toLocaleLowerCase();
-        const matchesName = course.name?.toLowerCase().includes(query);
+        const query = searchQuery.toLowerCase();
+        const matchesName = course.courseName?.toLowerCase().includes(query);
         const matchesNumber = course.courseNumber?.toLowerCase().includes(query);
-        const matchesSubject = course.subject?.toLowerCase().includes(query);
+        const matchesSubject = course.subjectArea?.toLowerCase().includes(query);
 
         return matchesName || matchesNumber || matchesSubject;
     });
@@ -34,8 +34,8 @@ function CourseList({ catalog, onAdd }) {
             <div className='search-bar'>
                 <input
                     type='text'
-                    className='search-input'
-                    placeholder=''
+                    className='catalog-search-input'
+                    placeholder='Search'
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 /> 
@@ -55,14 +55,14 @@ function CourseList({ catalog, onAdd }) {
                                         {course.courseNumber} | {course.courseName}
                                     </span>
                                     <span className='schedbuild-item-sub'>
-                                        Subject: {course.subjectArea} | {course.credits} Credits
+                                        {course.subjectArea} | {course.credits} Credits
                                     </span>
                                     <p className='catalog-item-desc'>
                                         {course.description}
                                     </p>
                                 </div>
                                 <button
-                                    className='add-course-btn'
+                                    className='btn'
                                     onClick={() => onAdd(course)}
                                 >
                                     Add Course
@@ -88,14 +88,14 @@ function CourseList({ catalog, onAdd }) {
                                         {course.courseNumber} | {course.courseName}
                                     </span>
                                     <span className='schedbuild-item-sub'>
-                                        Subject: {course.subjectArea} | {course.credits} Credits
+                                        {course.subjectArea} | {course.credits} Credits
                                     </span>
                                     <p className='catalog-item-desc'>
                                         {course.description}
                                     </p>
                                 </div>
                                 <button
-                                    className='add-course-btn'
+                                    className='btn'
                                     onClick={() => onAdd(course)}
                                 >
                                     Add Course

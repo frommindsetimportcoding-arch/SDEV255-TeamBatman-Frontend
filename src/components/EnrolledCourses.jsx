@@ -14,7 +14,7 @@ function EnrolledCourses({ officialCourses }) {
                     </p>
                 </div>
                 <div className="enrolled-credit-total">
-                    Registerd: <span>{totalEnrolledCredits} Credit Hours</span>
+                    Registered: <span>{totalEnrolledCredits} Credit Hours</span>
                 </div>
             </div>
 
@@ -33,9 +33,9 @@ function EnrolledCourses({ officialCourses }) {
                                     <span className="enrolled-course-term">{course.semester} Term</span>
                                 </div>
 
-                                <h3 className="enrolled-course-title">{course.name}</h3>
-                                <p className="enrolled-course-subject">{course.subject}</p>
-                                <p className="enrolled-course-desc">{course.description}</p>
+                                <h3 className="enrolled-course-title">{course.courseName}</h3>
+                                <p className="enrolled-course-subject">{course.subjectArea}</p>
+                                {/*I don't think I want this here. <p className="enrolled-course-desc">{course.description}</p>*/}
 
                                 <div className="enrolled-card-footer">
                                     <span className="enrolled-course-credits">{course.credits} Credits</span>

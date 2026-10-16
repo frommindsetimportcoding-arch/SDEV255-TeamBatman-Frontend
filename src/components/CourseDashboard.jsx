@@ -17,8 +17,8 @@ function CourseDashboard ({ courses, onEdit, onDelete, onRemoveStudent }) {
                     {/* Main Course Details Group */}
                     <div className="course-info">
                         <span className="course-number">{course.courseNumber}</span>
-                        <h3>{course.name}</h3>
-                        <p><strong>Subject:</strong> {course.subject} | <strong>Term:</strong> {course.semester}</p>
+                        <h3>{course.courseName}</h3>
+                        <p><strong>Subject:</strong> {course.subjectArea} | <strong>Term:</strong> {course.semester}</p>
                         <p className="course-desc-preview">{course.description}</p>
                         <span className="credits">{course.credits} Credits</span>
                     </div>

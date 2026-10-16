@@ -140,16 +140,26 @@
 
 /* Buttons and Interactive Stuff */
 
-.student-page .schedguild-remove-btn {
-    background: rgba(229, 62, 62, 0.15);
-    color: #fc8181;
-    border: 1px solid rgba(254, 215, 215, 0.2);
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s ease;
+.student-page .schedbuild-remove-btn {
+    background-color: #B42318;
+    color: var(--white);
+    width: 28px;                 /* Sets baseline width */
+    box-sizing: border-box;       /* Forces padding to stay INSIDE the width limits */
+    
+    /* 2. PREVENT FLEX GRID STRETCHING */
+    flex-shrink: 0;               /* Blocks flex parents from squishing button */
+    align-self: center;           /* Keeps it centered inside its specific layout slot */
+    
+    /* 3. VERTICAL PADDING CONTROLS */
+    height: 28px;                 
+    padding: 0px 5px;              
+    
+    /* Text alignment rules */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;          /* Prevents text from wrapping into two lines */
 }
 
 .student-page .schedbuild-summary {
@@ -210,15 +220,17 @@
 
 .student-page .catalog-search-input {
     width: 100%;
+    max-width: 600px;
     padding: 14px 18px;
-    background: var(--light-navy);
+    background: var(--text);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    color: var(--white);
-    font-size: 1rem;
+    color: var(--navy);
+    font-size: 1.1rem;
     box-sizing: border-box;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: border-color 0.15s ease;
+    margin-bottom: 20px;
 }
 
 .student-page .catalog-search-input:focus {
@@ -278,7 +290,8 @@
     ENROLLED COURSE LIST STYLES
   ==================================== */ 
 
-.student-page .enrolled-courses-container {
+.student-page .enrolled-courses-container,
+.home-container .enrolled-courses-container {
     background: var(--navy);
     border: 1px solid var(--light-navy);
     border-radius: 12px;
@@ -287,7 +300,8 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
 }
 
-.student-page .enrolled-header-row {
+.student-page .enrolled-header-row,
+.home-container .enrolled-header-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -296,14 +310,16 @@
     margin-bottom: 20px;
 }
 
-.student-page .enrolled-header-row h2 {
+.student-page .enrolled-header-row h2,
+.home-container .enrolled-header-row h2 {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--white);
     margin: 0 0 4px 0;
 }
 
-.student-page .enrolled-sub {
+.student-page .enrolled-sub,
+.home-container .enrolled-sub {
     font-size: 0.9rem;
     color: var(--text);
     opacity: 0.8;
@@ -311,7 +327,8 @@
 }
 
 /* Clear gold total display */
-.student-page .enrolled-credit-total {
+.student-page .enrolled-credit-total,
+.home-container .enrolled-credit-total {
     background: var(--light-navy);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 10px 18px;
@@ -321,7 +338,8 @@
     color: var(--white);
 }
 
-.student-page .enrolled-credit-total span {
+.student-page .enrolled-credit-total span,
+.home-container .enrolled-credit-total span {
     color: var(--gold);
     font-weight: 700;
     margin-left: 4px;
@@ -329,13 +347,15 @@
 
 /* Multi-column grid: Responsive Card Sizes */
 
-.student-page .enrolled-schedule-grid {
+.student-page .enrolled-schedule-grid,
+.home-container .enrolled-schedule-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320, 1fr));
     gap: 20px;
 }
 
-.student-page .enrolled-course-card {
+.student-page .enrolled-course-card,
+.home-container .enrolled-course-card {
     background: var(--light-navy);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 10px;
@@ -346,14 +366,16 @@
     transition: transform 0.15s ease;
 }
 
-.student-page .enrolled-card-header {
+.student-page .enrolled-card-header,
+.home-container .enrolled-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.student-page .enrolled-course-number {
+.student-page .enrolled-course-number,
+.home-container .enrolled-course-number {
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--navy);
@@ -363,28 +385,32 @@
     text-transform: uppercase;
 }
 
-.student-page .enrolled-course-term {
+.student-page .enrolled-course-term,
+.home-container .enrolled-course-term {
     font-size: 0.8rem;
     color: var(--text);
     opacity: 0.7;
     font-weight: 500;
 }
 
-.student-page .enrolled-course-title {
+.student-page .enrolled-course-title,
+.home-container .enrolled-course-title {
     font-size: 1.15rem;
     font-weight: 600;
     color: var(--white);
     margin: 0 0 4px 0;
 }
 
-.student-page .enrolled-course-subject {
+.student-page .enrolled-course-subject,
+.home-container .enrolled-course-subject {
     font-size: 0.85rem;
     color: var(--gold);
     margin: 0 0 10px 0;
     font-weight: 500;
 }
 
-.student-page .enrolled-course-desc {
+.student-page .enrolled-course-desc,
+.home-container .enrolled-course-desc {
     font-size: 0.88rem;
     color: var(--text);
     opacity: 0.85;
@@ -393,7 +419,8 @@
     flex-grow: 1;  /* Pushes card footers down evenly along the horizontal plane */ 
 }
 
-.student-page .enrolled-card-footer {
+.student-page .enrolled-card-footer,
+.home-container .enrolled-card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -402,7 +429,8 @@
     font-size: 0.85rem;
 }
 
-.student-page .enrolled-course-credits {
+.student-page .enrolled-course-credits,
+.home-container .enrolled-course-credits {
     color: var(--text);
     font-weight: 600;
 }

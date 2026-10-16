@@ -81,31 +81,33 @@ function Teacher() {
 
     return (
         <main className='teacher-page'>
-            <section className='teacher-header'>
-                <p className='eyebrow'>FACULTY INTERFACE</p>
-                <h1>Welcome, Professor {localStorage.getItem("lastName")}.</h1>
-            </section>
-            
-            <section className='teacher-courses'>
-                <div className='teacher-section-header'>
-                    <h2>My Active Course Templates</h2>
-                    {!showForm && <button className='btn' onClick={() => setShowForm(true)}>Create Course</button>}
-                </div>
+            <div className="dashboard-layout-wrapper">
+                <section className='teacher-header'>
+                    <p className='eyebrow'>FACULTY INTERFACE</p>
+                    <h1>Welcome, Professor {localStorage.getItem("lastName")}.</h1>
+                </section>
+                
+                <section className='teacher-courses'>
+                    <div className='teacher-section-header'>
+                        <h2>Course Dashboard</h2>
+                        {!showForm && <button className='create-course-btn' onClick={() => setShowForm(true)}>Create Course</button>}
+                    </div>
 
-                {showForm && (
-                    <CourseCreator
-                        editingCourse={editingCourse}
-                        onSave={handleSaveCourse}
-                        onCancel={handleCloseForm}
+                    {showForm && (
+                        <CourseCreator
+                            editingCourse={editingCourse}
+                            onSave={handleSaveCourse}
+                            onCancel={handleCloseForm}
+                        />
+                    )}
+
+                    <CourseDashboard
+                        courses={courses}
+                        onEdit={handleEditClick}
+                        onDelete={handleDeleteCourse}
                     />
-                )}
-
-                <CourseDashboard
-                    courses={courses}
-                    onEdit={handleEditClick}
-                    onDelete={handleDeleteCourse}
-                />
-            </section>
+                </section>
+            </div>
         </main>
     );
 }
